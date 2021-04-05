@@ -1,0 +1,25 @@
+import random
+lowDiapozon = 10
+highDiapozon = 100
+
+for i in range(10):
+    x = random.randint(lowDiapozon, highDiapozon)
+    y = random.randint(0, x - lowDiapozon)
+    
+    z = x - y
+
+    if (random.randint(0, 1) == 0):
+        print(f"{y} + {x} = {z}")
+    else:
+        print(f"{x} - {y} = {z}")
+
+
+
+"""highDigit = 100
+lowDigit = 1
+x = ""
+while (not x.isdigit()):
+    x = input(f"Введите ваше число от {lowDigit} до {highDigit}: ")
+    if (not x.isdigit()):
+        x = input(f".......Введите Ваше число цифрами: ") """
+        
