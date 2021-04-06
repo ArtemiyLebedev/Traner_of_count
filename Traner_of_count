@@ -16,7 +16,7 @@ for i in range(10):
 
 
 """highDigit = 100
-lowDigit = 1
+lowDigit = 10
 x = ""
 while (not x.isdigit()):
     x = input(f"Введите ваше число от {lowDigit} до {highDigit}: ")

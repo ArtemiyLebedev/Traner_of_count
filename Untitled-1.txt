@@ -1,0 +1,81 @@
+import random
+
+
+win = False  #Победа, число угадано!
+playGame = True #Хочешь продолжить играть?
+maxScore = 0  # очки заработанные за игру
+startScore = 100  # стартовое количество очков у игрока
+score = startScore # очки заработанные за раунд
+lenght = 0
+countInput = 0 # количество попыток угадать число за игру
+# ------------MainLoop-------------
+while (playGame):
+    lowDigit = int(input("Введите целое число котоое будет нижнией границей угадываемых чисел:  "))
+    highDigit = int(input("Введите целое число котоое будет верхней границей угадываемых чисел:  "))
+    digit = random.randint(lowDigit, highDigit)
+    if (random.randint(lowDigit, highDigit) < 5):
+        print("Ой, всё! Я перезагал число!")
+        digit = random.randint(lowDigit, highDigit)
+    print("Компьютер загадал число. Угадай его!")
+
+    #--------ВНУТРЕННИЙ ЦИКЛ---------
+    while (not win and score > 0):
+        x = ""
+        while (not x.isdigit()):
+            x = input(f"Введите ваше число от {lowDigit} до {highDigit}:  ")
+            if (not x.isdigit()):
+                x = input("........Введите Ваше число цифрами:  ")
+        x = int(x)
+        #--------Холодно или Горячо от загаданого числа-------
+        lenght = abs(x - digit)
+        if (lenght < 3):
+            print("Очень горячо!")
+        elif (lenght < 5):
+            print("Горячо!")
+        elif (lenght < 10):
+            print("Тепло!")
+        elif (lenght < 15):
+            print("Прохладно!")
+        elif (lenght < 20):
+            print("Холодно!")
+        else:
+            print("Ледяной ветер")        
+                #------- Подсказки и вычет очков за них--------       
+        if (countInput == 7):
+            score -= 10
+            if (digit % 2 == 0):
+                print("Число четное.")
+            else:
+                print("Число нечетное.")
+        elif (countInput == 6):
+            score -= 10
+            if (digit % 3 == 0):
+                print("Число делится на 3.")
+            else:
+                print("Число не делится на 3.")
+        elif (countInput > 2 and countInput < 5):
+            score -= 5
+            if (x > digit):
+                print("Загаданое число меньше вашего.")
+            else:
+                print("Загаданое число больше вашего.")
+
+        if (x == digit):
+            win = True
+            print("Победа! Число отгадано !!!")
+        elif score < 0:
+            print("Ой, у Вас закончились очки. Вы проиграли!")
+        else:
+            countInput += 1
+            score -= 5
+            print()
+            print("Осталось очков:", score)
+        
+                   #---------Сбрасываем win--------    
+    if (input("Enter - сыграть еще, 0 - выход") == "0"):
+        playGame = False
+    else:
+        win = False
+        score = startScore
+        print()
+        print()

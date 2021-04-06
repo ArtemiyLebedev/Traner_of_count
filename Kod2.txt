@@ -12,13 +12,11 @@ all_km = float(input("Введите протяженность пути в км
 price_litr = float(input("Введите цену за 1л топлива:"))
 
 
-if (consuption_fuel >= 0 and all_km >= 0):
+while (consuption_fuel >= 0 and all_km >= 0):
     all_consuption = all_km / 100 * consuption_fuel
     all_price = all_consuption * price_litr
-    print("Общий расход топлива на путь:", int(all_consuption * 100 / 100), "л.")
-    print("Общая сумма затрат", int(all_price * 100 / 100), "руб.")
-if (consuption_fuel <= 0 and all_km <= 0):
+if (consuption_fuel >= 0 and all_km >= 0):
     print("Ошибка ввода данных. Значения должны быть больше 0 !")
 
-
-
+print("Общий расход топлива на путь:", int(all_consuption * 100 / 100), "л.")
+print("Общая сумма затрат", int(all_price * 100 / 100), "руб.")
